@@ -7,18 +7,24 @@ public class PlayerController : MonoBehaviour
     public PlayerMovement movement;
     public LayerMask groundLayer;
     public bool grounded;
+    public bool boosting;
+    public float boostTime;
+    public float boostTimer;
     public Transform groundCheckPos;
     public Vector2 groundCheckSize;
 
     void Update()
     {
         GroundCheck();
+        if (boostTimer > 0) boostTimer -= Time.deltaTime;
+        else boosting = false;
+
         if (Input.GetKey("space") && grounded)
         {
             movement.Jump();
         }
 
-        if (Input.GetKey("d"))
+        if (Input.GetKey("d") && !boosting)
         {
             if (!grounded)
             {
@@ -29,7 +35,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") && !boosting)
         {
             if (!grounded)
             {
@@ -45,6 +51,15 @@ public class PlayerController : MonoBehaviour
     {
         grounded = Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0.0f, groundLayer);
 
+    }
+
+    public void Boost()
+    {
+        if (!boosting)
+        {
+            boosting = true;
+            boostTimer = boostTime;
+        }
     }
 
     void OnDrawGizmosSelected()

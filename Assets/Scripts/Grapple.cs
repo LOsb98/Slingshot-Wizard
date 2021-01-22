@@ -47,7 +47,8 @@ public class Grapple : MonoBehaviour
     {
         if (grapple.enabled)
         {
-            rope.SetColors(ropeColor, ropeColor); //Here
+            rope.startColor = ropeColor;
+            rope.endColor = ropeColor; //Here
             rope.SetPosition(0, transform.position);
             rope.SetPosition(1, grapple.connectedAnchor);
             return;
@@ -57,10 +58,12 @@ public class Grapple : MonoBehaviour
 
         if (Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)) > grappleMax)
         {
-            rope.SetColors(tooFarColor, tooFarColor); //Here
+            rope.startColor = tooFarColor;
+            rope.endColor = tooFarColor; //Here
             return;
         }
-        rope.SetColors(okColor, okColor); //Here
+        rope.startColor = okColor;
+        rope.endColor = okColor; //Here
 
     }
 

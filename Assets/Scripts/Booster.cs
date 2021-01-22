@@ -8,21 +8,24 @@ public class Booster : MonoBehaviour
 
     public LayerMask playerLayer;
     public Vector2 boostArea;
+    public Transform boostCheckPos;
     public float boostForce;
 
     void Update()
     {
-        Collider2D boostCheck = Physics2D.OverlapBox(transform.position, boostArea, 0.0f, playerLayer);
+        Collider2D boostCheck = Physics2D.OverlapBox(boostCheckPos.position, boostArea, 0.0f, playerLayer);
 
         if (boostCheck)
         {
-            boostCheck.GetComponent<Rigidbody2D>().AddForce(boostDirection * boostForce);
+            //Maybe change how PlayerController/PlayerMovement work to reduce this to one method call
+            boostCheck.GetComponent<Rigidbody2D>().velocity = (boostDirection * boostForce);
+            boostCheck.GetComponent<PlayerController>().Boost();
         }
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, boostArea);
+        Gizmos.DrawWireCube(boostCheckPos.position, boostArea);
     }
 }

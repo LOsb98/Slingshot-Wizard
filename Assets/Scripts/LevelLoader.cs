@@ -8,9 +8,10 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(levelID);
     }
 
-    public void NextLevel(int currentID)
+    public void NextLevel()
     {
-        SceneManager.LoadScene(currentID + 1);
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene + 1);
     }
 
     public void ReloadLevel()

@@ -254,7 +254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6173128218383751978}
-  speed: 5
+  maxSpeed: 5
+  groundAccel: 2
+  airAccel: 2
   jumpBoost: 0.1
 --- !u!114 &6173128218383751982
 MonoBehaviour:
@@ -273,6 +275,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   grounded: 0
+  boosting: 0
+  boostTime: 0.5
+  boostTimer: 0
   groundCheckPos: {fileID: 6173128218102640176}
   groundCheckSize: {x: 0.9, y: 0.1}
 --- !u!114 &6173128218383751977
@@ -291,7 +296,7 @@ MonoBehaviour:
   rope: {fileID: 6173128218383751981}
   terrainLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 64
   grappleMax: 10
   grappleLength: 0
   targetPoint: {x: 0, y: 0, z: 0}
