@@ -17,6 +17,7 @@ public class LevelGoal : MonoBehaviour
             endUI.SetActive(true);
 
             player.GetComponent<PlayerController>().enabled = false;
+            player.GetComponent<DistanceJoint2D>().enabled = false;
         }
     }
 }

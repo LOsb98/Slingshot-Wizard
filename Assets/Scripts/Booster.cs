@@ -15,7 +15,7 @@ public class Booster : MonoBehaviour
     {
         Collider2D boostCheck = Physics2D.OverlapBox(boostCheckPos.position, boostArea, 0.0f, playerLayer);
 
-        if (boostCheck)
+        if (boostCheck && boostCheck.tag == "Player")
         {
             //Maybe change how PlayerController/PlayerMovement work to reduce this to one method call
             boostCheck.GetComponent<Rigidbody2D>().velocity = (boostDirection * boostForce);

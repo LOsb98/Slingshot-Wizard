@@ -100,7 +100,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1
-  boostArea: {x: 2, y: 1.5}
+  boostArea: {x: 1.2, y: 1.5}
   boostCheckPos: {fileID: 1937154401924028660}
   boostForce: 25
 --- !u!1 &7166021343901827685

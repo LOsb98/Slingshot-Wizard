@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator animator;
+    public Rigidbody2D rb;
     public PlayerMovement movement;
     public LayerMask groundLayer;
     public bool grounded;
@@ -15,23 +17,26 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        DirectionCheck();
         GroundCheck();
+        animator.SetFloat("MoveSpeed", System.Math.Abs(rb.velocity.x));
         if (boostTimer > 0) boostTimer -= Time.deltaTime;
         else boosting = false;
 
         if (Input.GetKey("space") && grounded)
         {
-            movement.Jump();
+            movement.Jump(rb);
         }
 
         if (Input.GetKey("d") && !boosting)
         {
             if (!grounded)
             {
-                movement.AirMove(1);
+                movement.AirMove(rb, 1);
                 return;
             }
-            movement.GroundMove(1);
+            movement.GroundMove(rb, 1);
+            animator.SetBool("Moving", true);
             return;
         }
 
@@ -39,17 +44,32 @@ public class PlayerController : MonoBehaviour
         {
             if (!grounded)
             {
-                movement.AirMove(-1);
+                movement.AirMove(rb , - 1);
                 return;
             }
-            movement.GroundMove(-1);
+            movement.GroundMove(rb , - 1);
+            animator.SetBool("Moving", true);
             return;
         }
+        animator.SetBool("Moving", false);
     }
 
     private void GroundCheck()
     {
         grounded = Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0.0f, groundLayer);
+        animator.SetBool("Airborne", !grounded);
+    }
+
+    private void DirectionCheck()
+    {
+        if (GetComponent<DistanceJoint2D>().enabled == false)
+        {
+            if (rb.velocity.x < 0) transform.localScale = new Vector3(-1f, 1f, 1f);
+            else if (rb.velocity.x > 0) transform.localScale = new Vector3(1f, 1f, 1f);
+            return;
+        }
+        if (GetComponent<DistanceJoint2D>().connectedAnchor.x > transform.position.x) transform.localScale = new Vector3(1f, 1f, 1f);
+        else transform.localScale = new Vector3(-1f, 1f, 1f);
 
     }
 

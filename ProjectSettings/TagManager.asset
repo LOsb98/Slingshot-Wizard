@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: DeathPlane
+    uniqueID: 130462535
+    locked: 0
+  - name: Grabbable
+    uniqueID: 2853938053
+    locked: 0
+  - name: NonGrab
+    uniqueID: 1117585527
+    locked: 0
