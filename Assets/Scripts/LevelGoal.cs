@@ -14,10 +14,14 @@ public class LevelGoal : MonoBehaviour
         if (other.tag == "Player")
         {
             print("Hit level end trigger");
+            //Showing the end of level menu
             endUI.SetActive(true);
 
+            //Disabling the player grapple and controls
+            //Also stopping the rigidbody from being simulated so the player stops moving
             player.GetComponent<PlayerController>().enabled = false;
             player.GetComponent<DistanceJoint2D>().enabled = false;
+            player.GetComponent<Rigidbody2D>().simulated = false;
         }
     }
 }

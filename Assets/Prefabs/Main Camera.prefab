@@ -89,12 +89,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 8
-  m_RefResolutionX: 320
-  m_RefResolutionY: 180
+  m_RefResolutionX: 530
+  m_RefResolutionY: 298
   m_UpscaleRT: 1
   m_PixelSnapping: 1
-  m_CropFrameX: 0
-  m_CropFrameY: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
   m_StretchFill: 0
 --- !u!114 &9098531757065350918
 MonoBehaviour:
@@ -108,3 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0989adfdf8b1c45849da710648223e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yOffset: 0

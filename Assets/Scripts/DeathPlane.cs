@@ -22,7 +22,7 @@ public class DeathPlane : MonoBehaviour
             other.GetComponent<DistanceJoint2D>().enabled = false;
             print("Hit death plane");
 
-            //This will fuck up the line renderer if the player is sent to an object with a Z coordinate that isn't 0
+            //Make sure the checkpoint and spawnpos prefabs/objects have their Z value set to 0 or this warp will screw with the line renderer
             if (checkpoint.GetComponent<Checkpoint>().activated == true)
             {
                 other.transform.position = checkpoint.transform.position;

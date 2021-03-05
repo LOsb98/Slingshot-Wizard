@@ -10,6 +10,7 @@ public class Booster : MonoBehaviour
     public Vector2 boostArea;
     public Transform boostCheckPos;
     public float boostForce;
+    public Animator animator;
 
     void Update()
     {
@@ -20,6 +21,11 @@ public class Booster : MonoBehaviour
             //Maybe change how PlayerController/PlayerMovement work to reduce this to one method call
             boostCheck.GetComponent<Rigidbody2D>().velocity = (boostDirection * boostForce);
             boostCheck.GetComponent<PlayerController>().Boost();
+            animator.SetTrigger("BoostHit");
+        }
+        else
+        {
+            animator.ResetTrigger("BoostHit");
         }
     }
 

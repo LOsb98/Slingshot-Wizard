@@ -187,7 +187,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.02}
+  m_Offset: {x: 0, y: 0.23}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -198,7 +198,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.05, y: 1.24}
+  m_Size: {x: 1.05, y: 1.54}
   m_EdgeRadius: 0
 --- !u!58 &6173128218383751973
 CircleCollider2D:
@@ -251,6 +251,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 72
+  speedText: {fileID: 0}
   grounded: 0
   boosting: 0
   boostTime: 0.5
@@ -278,7 +279,7 @@ MonoBehaviour:
     m_Bits: 64
   nonGrabLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   mousePos: {x: 0, y: 0, z: 0}
   grappleMax: 16
   ropeColor: {r: 0.3962264, g: 0.14585866, b: 0, a: 1}
