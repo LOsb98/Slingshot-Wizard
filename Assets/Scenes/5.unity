@@ -379,6 +379,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1944797653737217680, guid: 8f00a2cbc9c42894d96f5c09323da359, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1446496524}
     - target: {fileID: 1944797653737217683, guid: 8f00a2cbc9c42894d96f5c09323da359, type: 3}
       propertyPath: m_Name
       value: MainUI
@@ -719,6 +723,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213cae9e67350d84eacd9f8b44f19bba, type: 3}
+--- !u!20 &1446496524 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 9098531757065350936, guid: b1a7f43070f3b5d4b82ee0e5a4e41281, type: 3}
+  m_PrefabInstance: {fileID: 2047703443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2044598892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -835,6 +844,18 @@ PrefabInstance:
     - target: {fileID: 9098531757065350919, guid: b1a7f43070f3b5d4b82ee0e5a4e41281, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098531757065350937, guid: b1a7f43070f3b5d4b82ee0e5a4e41281, type: 3}
+      propertyPath: m_UpscaleRT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098531757065350937, guid: b1a7f43070f3b5d4b82ee0e5a4e41281, type: 3}
+      propertyPath: m_PixelSnapping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098531757065350937, guid: b1a7f43070f3b5d4b82ee0e5a4e41281, type: 3}
+      propertyPath: m_RefResolutionY
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 9098531757065350938, guid: b1a7f43070f3b5d4b82ee0e5a4e41281, type: 3}
       propertyPath: m_Name

@@ -10,12 +10,29 @@ public class PlayerController : MonoBehaviour
     public PlayerMovement movement;
     public LayerMask groundLayer;
     public Text speedText;
+    public GameObject projectile;
+
     public bool grounded;
+
     public bool boosting;
     public float boostTime;
-    public float boostTimer;
+    private float boostTimer;
+    public float BoostTimer
+    {
+        get { return boostTimer; }
+        set
+        {
+            boostTimer = value;
+            if (boostTimer <= 0) boosting = false;
+        }
+
+    }
+
     public Transform groundCheckPos;
     public Vector2 groundCheckSize;
+
+    public Vector3 mousePos;
+    private Vector3 aimAngle;
 
     void Update()
     {
@@ -26,18 +43,32 @@ public class PlayerController : MonoBehaviour
         DirectionCheck();
         GroundCheck();
 
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+
+        aimAngle = mousePos - transform.position;
+
         //Math.abs makes the value always positive, can use to find the player's velocity for animation purposes
         animator.SetFloat("MoveSpeed", System.Math.Abs(rb.velocity.x));
 
         //When the player hits a spring/boost tile their movement controls are briefly disabled
         //Prevents janky looking movement/increases boost consistency
-        if (boostTimer > 0) boostTimer -= Time.deltaTime;
-        else boosting = false;
+        if (BoostTimer > 0) BoostTimer -= Time.deltaTime;
 
-        if (Input.GetKey("space") && grounded)
+        if (Input.GetMouseButtonDown(1))
+        {
+            GameObject newProj = Instantiate(projectile, transform.position, transform.rotation);
+            newProj.GetComponent<Projectile>().Initialize(aimAngle);
+        }
+
+        if (Input.GetKeyDown("space") && grounded)
         {
             movement.Jump(rb);
         }
+    }
+
+    void FixedUpdate()
+    {
 
         if (Input.GetKey("d") && !boosting)
         {
@@ -55,10 +86,10 @@ public class PlayerController : MonoBehaviour
         {
             if (!grounded)
             {
-                movement.AirMove(rb , - 1);
+                movement.AirMove(rb, -1);
                 return;
             }
-            movement.GroundMove(rb , - 1);
+            movement.GroundMove(rb, -1);
             animator.SetBool("Moving", true);
             return;
         }
@@ -77,8 +108,8 @@ public class PlayerController : MonoBehaviour
     { 
         if (GetComponent<DistanceJoint2D>().enabled == false)
         {
-            if (rb.velocity.x < 0) transform.localScale = new Vector3(-1f, 1f, 1f);
-            else if (rb.velocity.x > 0) transform.localScale = new Vector3(1f, 1f, 1f);
+            if (rb.velocity.x < -0.1) transform.localScale = new Vector3(-1f, 1f, 1f);
+            else if (rb.velocity.x > 0.1) transform.localScale = new Vector3(1f, 1f, 1f);
             return;
         }
         if (GetComponent<DistanceJoint2D>().connectedAnchor.x > transform.position.x) transform.localScale = new Vector3(1f, 1f, 1f);

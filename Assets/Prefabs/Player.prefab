@@ -141,7 +141,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 74d01df69a9295d40895af26a3d63e33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -228,10 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb56439a25de864e8496ab5003de42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  groundAccel: 5
-  airAccel: 2
-  jumpBoost: 0.2
+  maxSpeed: 7
+  groundAccel: 50
+  airAccel: 20
+  jumpBoost: 3
   jumpHeight: 8
 --- !u!114 &6173128218383751982
 MonoBehaviour:
@@ -252,12 +252,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   speedText: {fileID: 0}
+  projectile: {fileID: 7225679350242660746, guid: 3f63af937f8c466499f7d6596aa7917c, type: 3}
   grounded: 0
   boosting: 0
   boostTime: 0.5
-  boostTimer: 0
   groundCheckPos: {fileID: 6173128218102640176}
   groundCheckSize: {x: 0.42, y: 0.1}
+  mousePos: {x: 0, y: 0, z: 0}
 --- !u!114 &6173128218383751977
 MonoBehaviour:
   m_ObjectHideFlags: 0
