@@ -29,7 +29,7 @@ public class BackgroundScroll : MonoBehaviour
         if (transform.localPosition.x >= size.x || transform.localPosition.x <= -size.x) transform.localPosition = new Vector3 (0, transform.localPosition.y, transform.localPosition.z);
         if (transform.localPosition.y >= size.y || transform.localPosition.y <= -size.y) transform.localPosition = new Vector3 (transform.localPosition.x, 0, transform.localPosition.z);
 
-        print(transform.localPosition);
+        //print(transform.localPosition);
 
 
         oldCamPos = cam.transform.position;
