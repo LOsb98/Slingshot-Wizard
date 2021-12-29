@@ -51,3 +51,6 @@ TagManager:
   - name: NonGrab
     uniqueID: 1117585527
     locked: 0
+  - name: Tutorial Text
+    uniqueID: 828471133
+    locked: 0
