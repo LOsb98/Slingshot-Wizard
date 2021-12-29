@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public PlayerMovement movement;
     public LayerMask groundLayer;
-    public Text speedText;
+    public TextMeshProUGUI speedText;
     public GameObject projectile;
 
     public bool grounded;
@@ -33,6 +34,14 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 mousePos;
     private Vector3 aimAngle;
+
+    private void Start()
+    {
+        if (TimerController.Instance != null)
+        {
+            TimerController.Instance.SetTimerActive(true);
+        }
+    }
 
     void Update()
     {
