@@ -7,32 +7,31 @@ public class Button : MonoBehaviour
     public GameObject[] doors;
     public float openTime;
 
-    public float timer;
-    public float Timer
-    {
-        get { return timer; }
-        set 
-        {
-            timer = value;
-            if (timer <= 0)
-            {
-                foreach (GameObject door in doors) door.SetActive(true);
-            }
-        }
-    }
-
-    void Update()
-    {
-        if (Timer > 0) Timer -= Time.deltaTime;
-    }
+    private bool _buttonIsActive;
 
     public void Activate()
     {
         print("Button hit");
+
+        if (_buttonIsActive)
+        {
+            return;
+        }
+
         foreach (GameObject door in doors)
         {
             door.SetActive(false);
-            Timer = openTime;
+
+            _buttonIsActive = true;
+
+            Invoke("ReactivateDoors", openTime);
         }
+    }
+
+    private void ReactivateDoors()
+    {
+        foreach (GameObject door in doors) door.SetActive(true);
+
+        _buttonIsActive = false;
     }
 }
