@@ -9,13 +9,15 @@ public class LevelGoal : MonoBehaviour
     public GameObject endUI;
     public GameObject player;
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.tag == "Player")
+        if (collision.gameObject == player)
         {
-            print("Hit level end trigger");
-            //Showing the end of level menu
-            endUI.SetActive(true);
+            if (TimerController.Instance!= null)
+            {
+                TimerController.Instance.SetTimerActive(false);
+            }
+            
 
             //Disabling the player grapple and controls
             //Also stopping the rigidbody from being simulated so the player stops moving
@@ -23,5 +25,14 @@ public class LevelGoal : MonoBehaviour
             player.GetComponent<DistanceJoint2D>().enabled = false;
             player.GetComponent<Rigidbody2D>().simulated = false;
         }
+
+        FinishLevel();
+    }
+
+    protected virtual void FinishLevel()
+    {
+        print("Hit level end trigger");
+        //Showing the end of level menu
+        endUI.SetActive(true);
     }
 }
