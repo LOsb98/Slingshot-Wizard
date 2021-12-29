@@ -19,12 +19,15 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject, 0f);
         }
 
-        transform.Translate(direction * Time.deltaTime);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
     }
 
     public void Initialize(Vector3 newDirection)
     {
-        direction = new Vector2(newDirection.x, newDirection.y).normalized * speed;
+        direction = new Vector2(newDirection.x, newDirection.y).normalized;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     void OnDrawGizmosSelected()
